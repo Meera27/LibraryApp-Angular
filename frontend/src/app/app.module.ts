@@ -3,18 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { HeadermainComponent } from './headermain/headermain.component';
+import { BookComponent } from './book/book.component';
+import { BooksComponent } from './books/books.component';
+import { AuthorComponent } from './author/author.component';
+import { AuthorsComponent } from './authors/authors.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { EditBooksComponent } from './edit-books/edit-books.component';
+import { DeleteBooksComponent } from './delete-books/delete-books.component';
+import { DeleteAuthorsComponent } from './delete-authors/delete-authors.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     HomeComponent,
-    HeadermainComponent
+    BookComponent,
+    BooksComponent,
+    AuthorComponent,
+    AuthorsComponent,
+    LoginComponent,
+    SignupComponent,
+    EditBooksComponent,
+    DeleteBooksComponent,
+    DeleteAuthorsComponent,
+    HeaderComponent
+
   ],
   imports: [
     BrowserModule,
