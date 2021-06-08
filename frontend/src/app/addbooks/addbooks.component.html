@@ -1,0 +1,66 @@
+<div id="masthead">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <h1>{{title}}
+            <p class="lead"></p>
+          </h1>
+        </div>
+        <div class="col-md-5">
+          <div class="well well-lg">
+            <div class="row">
+              <div class="col-sm-12">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /cont -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="top-spacer">
+          </div>
+        </div>
+      </div>
+    </div><!-- /cont -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="row">
+              <!-- <form class="form col-lg-6" action="/addbooks/add" method="GET" onsubmit="return validate()" role="search" style="margin-left: 25%; margin-right: 25%;"> -->
+              <form class="form col-lg-6" action="" (ngSubmit)="addBook()" method="POST" role="search"
+                style="margin-left: 25%; margin-right: 25%;" enctype="multipart/form-data">
+
+                <div class="form-group">
+                  <input type="text" id="book" class="form-control" [(ngModel)]="bookdetails.title" placeholder="Book" name="title" />
+                </div>
+                <div class="form-group">
+                  <input type="text" id="genre" class="form-control" [(ngModel)]="bookdetails.genre" placeholder="Genre" name="genre" />
+                </div>
+                <div class="form-group">
+                  <input type="text" id="name" class="form-control" [(ngModel)]="bookdetails.author" placeholder="Author's Name" name="author" />
+                </div>
+
+                <div class="form-group custom-file">
+                  <input type="file" class="custom-file-input" [(ngModel)]="bookdetails.image" id="customFile" name="image"  />
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control rounded-0" id="tarea" rows="3" [(ngModel)]="bookdetails.desc" placeholder="Plot of the novel"
+                    name="desc"></textarea>
+                </div>
+                <button type="submit" class="btn btn-google-plus">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/col-12-->
+    </div>
+  </div>
+  <hr>

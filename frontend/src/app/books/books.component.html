@@ -39,38 +39,17 @@
               
               
               <!--/stories-->
-              <div class="row">    
-                <br>
-                <div class="col-md-2 col-sm-3 text-center">
-                  <a class="story-title" href="#"><img alt="" src="http://api.randomuser.me/portraits/thumb/men/58.jpg" style="width:100px;height:100px" class="img-circle"></a>
-                </div>
-                <div class="col-md-10 col-sm-9">
-                  <h3>Repurpose Content to Reach a Wider Audience</h3>
-                  <a href="" class="btn btn-primary pull-right btnNext">Edit<i
-                    class="glyphicon "></i></a><br><br>
-                <a href="" class="btn btn-primary pull-right btnNext">Delete<i
-                    class="glyphicon "></i></a>
-
-
-                  <div class="row">
-                    <div class="col-xs-9">
-                      <h4><span class="label label-default">97thfloor.com</span></h4><h4>
-                      <small style="font-family:courier,'new courier';" class="text-muted">2 hours ago  • <a routerLink="book" class="text-muted">Read More</a></small>
-                      </h4></div>
-                    <div class="col-xs-3"></div>
-                  </div>
-                  <br><br>
-                </div>
-              </div>
-              <hr>
+           
+              <div class="row" *ngFor="let books of bdata">    
               
-              <div class="row">    
                 <br>
                 <div class="col-md-2 col-sm-3 text-center">
-                  <a class="story-title" href="#"><img alt="" src="http://api.randomuser.me/portraits/thumb/women/56.jpg" style="width:100px;height:100px" class="img-circle"></a>
+                  <a class="story-title" href="#"><img alt="image here" [src]="books.image" style="width:100px;height:100px" class="img-circle"></a>
                 </div>
                 <div class="col-md-10 col-sm-9">
-                  <h3>14 Useful Sites for Designers</h3>
+                  <!-- <h3>TrendPaper - What's Trending in the World</h3> -->
+                  <h3>{{books.title}}</h3>
+                  <h5>{{books.author}}</h5>
 
                   <a href="" class="btn btn-primary pull-right btnNext">Edit<i
                     class="glyphicon "></i></a><br><br>
@@ -79,82 +58,7 @@
 
                   <div class="row">
                     <div class="col-xs-9">
-                      <h4><span class="label label-default">devgarage.com</span></h4><h4>
-                      <small style="font-family:courier,'new courier';" class="text-muted">Yesterday • <a routerLink="book" class="text-muted">Read More</a></small>
-                      </h4></div>
-                    <div class="col-xs-3"></div>
-                  </div>
-                  <br><br>
-                </div>
-              </div>
-              <hr>
-                      
-              <div class="row">    
-                <br>
-                <div class="col-md-2 col-sm-3 text-center">
-                  <a class="story-title" href="#"><img alt="" src="http://api.randomuser.me/portraits/thumb/men/29.jpg" style="width:100px;height:100px" class="img-circle"></a>
-                </div>
-                <div class="col-md-10 col-sm-9">
-                  <h3>Measuring Your Link Building with Google Analytics</h3>
-
-                  <a href="" class="btn btn-primary pull-right btnNext">Edit<i
-                    class="glyphicon "></i></a><br><br>
-                <a href="" class="btn btn-primary pull-right btnNext">Delete<i
-                    class="glyphicon "></i></a>
-
-                  <div class="row">
-                    <div class="col-xs-9">
-                      <h4><span class="label label-default">searchenginewatch.com</span></h4><h4>
-                      <small style="font-family:courier,'new courier';" class="text-muted">Yesterday • <a routerLink="book" class="text-muted">Read More</a></small>
-                      </h4></div>
-                    <div class="col-xs-3"></div>
-                  </div>
-                  <br><br>
-                </div>
-              </div>
-              <hr>
-    
-              <div class="row">    
-                <br>
-                <div class="col-md-2 col-sm-3 text-center">
-                  <a class="story-title" href="#"><img alt="" src="http://api.randomuser.me/portraits/thumb/women/56.jpg" style="width:100px;height:100px" class="img-circle"></a>
-                </div>
-                <div class="col-md-10 col-sm-9">
-                  <h3>Dramatically Raise the Value of Any Piece of Content with These 27 Tactics</h3>
-
-                  <a href="" class="btn btn-primary pull-right btnNext">Edit<i
-                    class="glyphicon "></i></a><br><br>
-                <a href="" class="btn btn-primary pull-right btnNext">Delete<i
-                    class="glyphicon "></i></a>
-
-                  <div class="row">
-                    <div class="col-xs-9">
-                      <h4><span class="label label-default">searchenginewatch.com</span></h4><h4>
-                      <small style="font-family:courier,'new courier';" class="text-muted">2 days ago • <a routerLink="book" class="text-muted">Read More</a></small>
-                      </h4></div>
-                    <div class="col-xs-3"></div>
-                  </div>
-                  <br><br>
-                </div>
-              </div>
-              <hr>
-              
-              <div class="row">    
-                <br>
-                <div class="col-md-2 col-sm-3 text-center">
-                  <a class="story-title" href="#"><img alt="" src="http://api.randomuser.me/portraits/thumb/men/29.jpg" style="width:100px;height:100px" class="img-circle"></a>
-                </div>
-                <div class="col-md-10 col-sm-9">
-                  <h3>TrendPaper - What's Trending in the World</h3>
-
-                  <a href="" class="btn btn-primary pull-right btnNext">Edit<i
-                    class="glyphicon "></i></a><br><br>
-                <a href="" class="btn btn-primary pull-right btnNext">Delete<i
-                    class="glyphicon "></i></a>
-
-                  <div class="row">
-                    <div class="col-xs-9">
-                      <h4><span class="label label-default">betali.st</span></h4><h4>
+                      <h4><span class="label label-default">{{books.genre}}</span></h4><h4>
                       <small style="font-family:courier,'new courier';" class="text-muted">Last week • <a routerLink="book" class="text-muted">Read More</a></small>
                       </h4></div>
                     <div class="col-xs-3"></div>

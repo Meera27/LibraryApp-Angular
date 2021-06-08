@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BookModel} from './book.model';
+import {DatasService} from '../datas.service';
 
 @Component({
   selector: 'app-books',
@@ -6,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-  title:String="Books"
+  title:String="Books";
+  imageWidth:Number = 70;
+  imageMargin:Number = 3;
 
-  constructor() { }
+  bdata : BookModel[] = [];
+
+  constructor(public dataServiceObj : DatasService) { }
 
   ngOnInit(): void {
+    this.dataServiceObj.getBookData()
+   .subscribe((book)=>{
+      this.bdata = JSON.parse(JSON.stringify(book));
+   })
   }
 
 }

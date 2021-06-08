@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddauthorsComponent } from './addauthors/addauthors.component';
+import { AddbooksComponent } from './addbooks/addbooks.component';
 import { AuthorComponent } from './author/author.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path:'author',component:AuthorComponent},
   {path:'edit-authors',component:EditAuthorsComponent},
   {path:'delete-authors',component:DeleteAuthorsComponent},
-  {path:'books',component:BooksComponent}
+  {path:'books',component:BooksComponent},
+  {path:'addbooks',component:AddbooksComponent},
+  {path:'addauthor',component:AddauthorsComponent}
 ];
 
 @NgModule({
