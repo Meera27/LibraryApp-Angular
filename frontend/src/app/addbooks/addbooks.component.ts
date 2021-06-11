@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatasService } from '../datas.service';
 import {BookModel} from '../books/book.model'
 import { Router } from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-addbooks',
@@ -12,7 +13,7 @@ export class AddbooksComponent implements OnInit {
   title : String ="Add Books";
 
 
-  constructor(private dataService : DatasService,private router :Router) { }
+  constructor(private dataService : DatasService,private router :Router, public _auth:AuthService) { }
   bookdetails = new BookModel('','','','','');
   ngOnInit(): void {
   }
@@ -22,5 +23,4 @@ export class AddbooksComponent implements OnInit {
     alert("Success");
     this.router.navigate(['/books']);
   }
-
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {BookModel} from './book.model';
 import {DatasService} from '../datas.service';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-books',
@@ -14,7 +16,7 @@ export class BooksComponent implements OnInit {
 
   bdata : BookModel[] = [];
 
-  constructor(public dataServiceObj : DatasService) { }
+  constructor(private dataServiceObj : DatasService,private router : Router) { }
 
   ngOnInit(): void {
     this.dataServiceObj.getBookData()

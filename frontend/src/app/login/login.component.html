@@ -39,18 +39,21 @@
             <div class="row">
      
 
-              <form class="form col-lg-6" action="" method="POST" role="search"style="margin-left: 25%; margin-right: 25%;" >
+              <form class="form col-lg-6" #userlogin="ngForm" (ngSubmit)="loginUser(user)"action="" method="POST" role="search"style="margin-left: 25%; margin-right: 25%;" >
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  <!-- <label for="exampleInputEmail1">Email address</label> -->
+                  <!-- <input type="email" class="form-control" id="exampleInputEmail1" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="user.email" name="email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" placeholder="Enter email" required> -->
+                  <input type="text" class="form-control" [(ngModel)]="user.username" id="exampleInputEmail1" name="username" placeholder="Enter email" required>
+                  <!-- <small class="text-danger" [class.d-none]="email.valid || email.touched">Enter Valid Email</small> -->
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <!-- <label for="exampleInputPassword1">Password</label> -->
+                  <!-- <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="user.password" name="password" placeholder="Password" minlength="6" required> -->
+                  <input type="password" class="form-control" [(ngModel)]="user.password" id="exampleInputPassword1"  name="password" placeholder="Password" minlength="6" required>
                 </div>
+                <!-- <button type="submit"[disabled]="userlogin.form.invalid" class="btn btn-default">Submit</button> -->
                 <button type="submit" class="btn btn-default">Submit</button>
               </form>
-
             </div>
           </div>
         </div>

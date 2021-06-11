@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 // const DB = 'mongodb+srv://user1:user1@ictak-meera.d0obp.mongodb.net/LibraryApp?retryWrites=true&w=majority';
- const DB = "mongodb://localhost:27017/libraryappnew";
+const DB = "mongodb://localhost:27017/libraryappnew";
 const InitiateMongoServer = async () => {
  try {
    await mongoose.connect(DB, {

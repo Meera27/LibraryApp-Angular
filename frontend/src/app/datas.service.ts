@@ -22,5 +22,12 @@ export class DatasService {
     return this.http.post('http://localhost:1514/addbooks',{"book":item})
     .subscribe((data=>{
       console.log(data)}))
+      
   }
+
+getsBook(id:any){
+    return this.http.get('http://localhost:1514/book/${id}');
+
+}
+  // return this.http.get(`api/leagues/${id}`).map(res => res.json());
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {AuthGuard} from './auth.guard';
 import { AddauthorsComponent } from './addauthors/addauthors.component';
 import { AddbooksComponent } from './addbooks/addbooks.component';
 import { AuthorComponent } from './author/author.component';
@@ -11,17 +12,46 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
+
 const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent},
-  {path:'authors',component:AuthorsComponent},
-  {path:'author',component:AuthorComponent},
-  {path:'edit-authors',component:EditAuthorsComponent},
-  {path:'delete-authors',component:DeleteAuthorsComponent},
-  {path:'books',component:BooksComponent},
-  {path:'addbooks',component:AddbooksComponent},
-  {path:'addauthor',component:AddauthorsComponent}
+  {path:'',
+  component:HomeComponent
+},
+  {path:'login',
+  component:LoginComponent
+},
+  {path:'signup',
+  component:SignupComponent
+},
+  {path:'authors',
+  canActivate : [AuthGuard],
+  component:AuthorsComponent
+},
+  {path:'author',
+  canActivate : [AuthGuard],
+  component:AuthorComponent
+},
+  {path:'edit-authors',
+  canActivate : [AuthGuard],
+  component:EditAuthorsComponent
+},
+  {path:'delete-authors',
+  canActivate : [AuthGuard],
+  component:DeleteAuthorsComponent},
+{
+  path:'books',
+  canActivate : [AuthGuard],
+  component:BooksComponent
+},
+
+  {path:'addbooks',
+  canActivate : [AuthGuard],
+  component:AddbooksComponent
+},
+  {path:'addauthor',
+  canActivate : [AuthGuard],
+  component:AddauthorsComponent
+}
 ];
 
 @NgModule({

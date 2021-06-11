@@ -1,22 +1,61 @@
 const express = require('express');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const InitiateMongoServer = require("./db");
 InitiateMongoServer();
+
 
 const UserData = require('./src/model/userdata');
 const BookData = require('./src/model/bookdata');
 const AuthorData = require('./src/model/authordata');
 
 var app = new express();
-
-
-// var bodyparser = require('body-parser');
-
-
 app.use(cors());
 app.use(express.json());
 
-app.get("/books", function (req, res) {
+username="admin"
+password="1234";
+// var bodyparser = require('body-parser');
+function verifyToken(req,res,next){
+
+  if(!req.headers.authorization)
+  {
+    return res.status(401).send('Unauthorized Request');
+  }
+  let token = req.headers.authorization.split('')[1];
+  if(token=='null')
+  {
+    return res.status(401).send("Unauthorised Request");
+  }
+  let payload = jwt.verify(token,'secretKey');
+  console.log(payload);
+  if(!payload)
+  {
+    return res.status(401).send("Unauthorized Request");
+  }
+  req.userId= payload.subject;
+  next()
+}
+
+
+app.post("/login",(req, res)=>{
+    let userData = req.body;
+    if(!username){
+      res.status(401).send("Invalid Username")
+    }else 
+    if(password !== userData.password){
+      res.status(401).send("Invalid Password")
+    }
+    else{
+      let payload = {subject:username+password}
+      let token = jwt.sign(payload,'secretKey')
+      res.status(200).send({token});
+      // console.log("Success");
+    }
+})
+
+
+app.get("/books",function (req, res) {
     // res.send("hi");
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
@@ -25,7 +64,15 @@ app.get("/books", function (req, res) {
                     res.send(bookdata);
                 });
     });
-    app.post("/addbooks",function (req, res) {
+    // app.get("/:id", function (req, res) {
+    // const id = req.params.id;
+    // BookData.findOne({ _id: id })
+    //           .then(function(bookdata){
+    //                 res.send(bookdata);
+    //             });
+    // });
+
+    app.post("/addbooks",verifyToken,function (req, res) {
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         console.log(req.body);
@@ -42,16 +89,16 @@ app.get("/books", function (req, res) {
             console.log(book);
           });
 
-    app.get("/authors", function (req, res) {
+    app.get("/authors",function (req, res) {
         // res.send("hi");
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         AuthorData.find()
                     .then(function(authordata){
                         res.send(authordata);
-                    });
+                   });
         });
-        app.post("/addauthor",function (req, res) {
+        app.post("/addauthor",verifyToken,function (req, res) {
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         console.log(req.body);

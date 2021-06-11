@@ -39,29 +39,24 @@
           <div class="row">
    
 
-            <form class="form col-lg-6" action="" method="" role="search"style="margin-left: 25%; margin-right: 25%;" >
+            <form class="form form-group col-lg-6" [formGroup]="registerForm" action="" method="" role="search"style="margin-left: 25%; margin-right: 25%;" >
               
               <div class="form-group">
-                <!-- <label for="exampleInputEmail1">Email address</label> -->
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Firstname">
+                <input type="text" class="form-control"   placeholder="Firstname">
               </div>
               <div class="form-group">
-                <!-- <label for="exampleInputEmail1">Email address</label> -->
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Lastname">
+                <input type="text" class="form-control"  placeholder="Lastname">
               </div>
               <div class="form-group">
-                <!-- <label for="exampleInputEmail1">Email address</label> -->
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Phone Number">
+                <input type="text" class="form-control"  placeholder="Phone Number">
               </div>
               <div class="form-group">
-                <!-- <label for="exampleInputEmail1">Email address</label> -->
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                <input type="email" class="form-control" FormControlName="email" id="exampleInputEmail1" placeholder="Enter email">
               </div>
               <div class="form-group">
-                <!-- <label for="exampleInputPassword1">Password</label> -->
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" FormControlName="password" id="exampleInputPassword1" placeholder="Password">
               </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit"[disabled]="!registerForm.invalid" class="btn btn-default">Submit</button>
             </form>
 
           </div>

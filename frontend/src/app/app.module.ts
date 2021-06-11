@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
+// import {FormBuider} from '@angular/forms'
+import{ AuthService} from './auth.service';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -16,9 +18,13 @@ import { DeleteBooksComponent } from './delete-books/delete-books.component';
 import { DeleteAuthorsComponent } from './delete-authors/delete-authors.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddbooksComponent } from './addbooks/addbooks.component';
 import { AddauthorsComponent } from './addauthors/addauthors.component';
+import { DatasService } from './datas.service';
+import {TokenInterceptorService} from'./token-interceptor.service';
+import { from } from 'rxjs';
+import { importType } from '@angular/compiler/src/output/output_ast';
 
 
 @NgModule({
@@ -45,9 +51,17 @@ import { AddauthorsComponent } from './addauthors/addauthors.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    // FormBuilder,
+    ReactiveFormsModule
   ],
-  providers: [],
+  
+  providers: [DatasService,AuthService,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

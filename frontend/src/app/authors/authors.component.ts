@@ -22,5 +22,4 @@ export class AuthorsComponent implements OnInit {
       this.adata = JSON.parse(JSON.stringify(authors));
     })
   }
-
 }
