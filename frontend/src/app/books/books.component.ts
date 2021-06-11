@@ -16,13 +16,30 @@ export class BooksComponent implements OnInit {
 
   bdata : BookModel[] = [];
 
-  constructor(private dataServiceObj : DatasService,private router : Router) { }
+  constructor(private dataService : DatasService,private router : Router) { }
 
   ngOnInit(): void {
-    this.dataServiceObj.getBookData()
+    this.dataService.getBookData()
    .subscribe((book)=>{
       this.bdata = JSON.parse(JSON.stringify(book));
    })
+  }
+  DeleteBook(id: String){
+    this.dataService.deleteBook(id).subscribe(res =>{
+      this.dataService.getBookData().subscribe((data)=>{
+        this.bdata=JSON.parse(JSON.stringify(data));
+      })
+    })
+  }
+
+  EditBook(book:any){
+    localStorage.setItem("editBookId", book._id.toString());
+    this.router.navigate(['editbook']);
+  }
+
+  ReadBook(book:any){
+    localStorage.setItem("readBookId", book._id.toString());
+    this.router.navigate(['book']);
   }
 
 }

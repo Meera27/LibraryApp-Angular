@@ -14,6 +14,8 @@ import { AuthorsComponent } from './authors/authors.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EditBooksComponent } from './edit-books/edit-books.component';
+import { EditAuthorsComponent } from './edit-authors/edit-authors.component';
+
 import { DeleteBooksComponent } from './delete-books/delete-books.component';
 import { DeleteAuthorsComponent } from './delete-authors/delete-authors.component';
 import { HeaderComponent } from './header/header.component';
@@ -39,6 +41,7 @@ import { importType } from '@angular/compiler/src/output/output_ast';
     LoginComponent,
     SignupComponent,
     EditBooksComponent,
+    EditAuthorsComponent,
     DeleteBooksComponent,
     DeleteAuthorsComponent,
     HeaderComponent,

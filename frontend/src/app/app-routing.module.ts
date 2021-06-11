@@ -7,10 +7,11 @@ import { AuthorComponent } from './author/author.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
 import { DeleteAuthorsComponent } from './delete-authors/delete-authors.component';
-import { EditAuthorsComponent } from './edit-authors/edit-authors.component';
+import {EditAuthorsComponent} from './edit-authors/edit-authors.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { EditBooksComponent } from './edit-books/edit-books.component';
 
 
 const routes: Routes = [
@@ -27,11 +28,15 @@ const routes: Routes = [
   canActivate : [AuthGuard],
   component:AuthorsComponent
 },
+{
+path:'editbook',
+component:EditBooksComponent
+},
   {path:'author',
   canActivate : [AuthGuard],
   component:AuthorComponent
 },
-  {path:'edit-authors',
+  {path:'editauthor',
   canActivate : [AuthGuard],
   component:EditAuthorsComponent
 },

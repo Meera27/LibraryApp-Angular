@@ -64,15 +64,9 @@ app.get("/books",function (req, res) {
                     res.send(bookdata);
                 });
     });
-    // app.get("/:id", function (req, res) {
-    // const id = req.params.id;
-    // BookData.findOne({ _id: id })
-    //           .then(function(bookdata){
-    //                 res.send(bookdata);
-    //             });
-    // });
 
-    app.post("/addbooks",verifyToken,function (req, res) {
+
+    app.post("/addbooks",function (req, res) {
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         console.log(req.body);
@@ -98,7 +92,7 @@ app.get("/books",function (req, res) {
                         res.send(authordata);
                    });
         });
-        app.post("/addauthor",verifyToken,function (req, res) {
+        app.post("/addauthor",function (req, res) {
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         console.log(req.body);
@@ -114,6 +108,75 @@ app.get("/books",function (req, res) {
             console.log(author);
           });
     
+
+          app.put('/editbook', (req,res)=>{
+            console.log(req.body)
+            id=req.body._id,
+            title = req.body.title,
+            genre = req.body.genre,
+            author = req.body.author,
+            image = req.body.image,
+            desc = req.body.desc
+            BookData.findByIdAndUpdate({"_id":id},
+                                        {$set:{
+                                        "title":title,
+                                        "genre":genre,
+                                        "author":author,
+                                        "genre":genre,
+                                        "image":image,
+                                        "desc":desc}})
+           .then(function(){
+               res.send();
+           })
+        });
+
+        app.delete('/deletebook/:id', function(req,res){
+          const id = req.params.id;
+          BookData.remove({_id: id})
+          .then(function(){
+              res.status(200).json({id});
+          })
+      });
+
+      app.delete('/deleteauthor/:id', function(req,res){
+        const id = req.params.id;
+        AuthorData.remove({_id: id})
+        .then(function(){
+            res.status(200).json({id});
+        })
+    });
+        app.put('/editauthor', (req,res)=>{
+          console.log(req.body)
+          id=req.body._id,
+          name = req.body.name,
+          title = req.body.title,
+          image= req.body.image,
+          desc=req.body.desc
+          AuthorData.findByIdAndUpdate({"_id":id},
+                                      {$set:{
+                                        "name" : req.body.name,
+                                        "title" : req.body.title,
+                                        "image" : req.body.image,
+                                        "desc":desc}})
+         .then(function(){
+             res.send();
+         })
+      });
+      app.get('/book/:id', function(req, res){
+        const id = req.params.id;
+        BookData.findOne({"_id":id})
+        .then((book)=>{
+              res.send(book);
+          });
+      });
+    
+    app.get('/author/:id', function(req, res){
+        const id = req.params.id;
+        AuthorData.findOne({"_id":id})
+        .then((author)=>{
+              res.send(author);
+          });
+      });
 
 app.listen(1514,function(){
     console.log("Listening to port 1514");

@@ -17,10 +17,7 @@ export class BookComponent implements OnInit {
   constructor(private bookServiceObj : DatasService) { }
 
   ngOnInit(): void {
-    // this.bookServiceObj.getsBook(__id)
-    // .subscribe((book)=>{
-    //   this.sbook = JSON.parse(JSON.stringify(book));
-    // })
+  
   }
 
 }

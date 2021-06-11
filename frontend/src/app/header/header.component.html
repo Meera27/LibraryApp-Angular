@@ -12,22 +12,22 @@
       <nav class="collapse navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
           <li>
-            <a class="nav-link" *ngIf="!_auth.loggedIn()" routerLinkActive="active" routerLink="/login" >Login</a>
+            <a class="nav-link" *ngIf="_auth.loggedIn()" routerLinkActive="active" routerLink="/login" >Login</a>
           </li>
           <li>
-            <a routerLink="signup" *ngIf="!_auth.loggedIn()">SignUp</a>
+            <a routerLink="signup" *ngIf="_auth.loggedIn()">SignUp</a>
           </li>
           <li>
-            <a routerLink="authors" *ngIf="_auth.loggedIn()">Authors</a>
+            <a routerLink="authors" *ngIf="!_auth.loggedIn()">Authors</a>
           </li>
           <li>
-            <a routerLink="books" *ngIf="_auth.loggedIn()">Books</a>
+            <a routerLink="books" *ngIf="!_auth.loggedIn()">Books</a>
           </li>
           <li>
-            <a routerLink="addbooks" *ngIf="_auth.loggedIn()">Add Books</a>
+            <a routerLink="addbooks" *ngIf="!_auth.loggedIn()">Add Books</a>
           </li>
           <li>
-            <a routerLink="addauthor" *ngIf="_auth.loggedIn()">Add Authors</a>
+            <a routerLink="addauthor" *ngIf="!_auth.loggedIn()">Add Authors</a>
           </li>
         </ul>
         <ul class="nav navbar-right navbar-nav">

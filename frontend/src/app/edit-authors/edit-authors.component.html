@@ -1,1 +1,62 @@
-<p>edit-authors works!</p>
+<div id="masthead">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <h1>Update Author
+            <p class="lead"></p>
+          </h1>
+        </div>
+        <div class="col-md-5">
+          <div class="well well-lg">
+            <div class="row">
+              <div class="col-sm-12">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /cont -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="top-spacer">
+          </div>
+        </div>
+      </div>
+    </div><!-- /cont -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="row">
+              <!-- <form class="form col-lg-6" action="/addbooks/add" method="GET" onsubmit="return validate()" role="search" style="margin-left: 25%; margin-right: 25%;"> -->
+              <form class="form col-lg-6" (ngSubmit)="EditAuthor()" style="margin-left: 25%; margin-right: 25%;">
+
+                <div class="form-group">
+                  <input type="text" id="name1" class="form-control" [(ngModel)]="authorItem.name" placeholder="Author's Name" name="name">
+                </div>
+                <div class="form-group">
+                  <input type="text" id="book1" class="form-control"  placeholder="Bestseller" [(ngModel)]="authorItem.title"
+                    name="title">
+                </div>
+                <div class="form-group custom-file">
+                  <input type="file" class="custom-file-input"  id="customFile" name="image" required>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control rounded-0" id="tarea1" rows="3"  placeholder="Few words about the author" [(ngModel)]="authorItem.desc"
+                    name="desc"></textarea>
+                </div>
+                <button type="submit" class="btn btn-google-plus">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/col-12-->
+    </div>
+  </div>
+  <hr>

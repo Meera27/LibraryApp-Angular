@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {DatasService} from '../datas.service';
 import {AuthorModel} from './author.model';
+import { AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-authors',
@@ -14,12 +16,29 @@ export class AuthorsComponent implements OnInit {
 
   adata : AuthorModel[] =[];
 
-  constructor(public authorServiceObj : DatasService) { }
+  constructor(public authorService : DatasService,public router :Router,private _auth: AuthService) { }
 
   ngOnInit(): void {
-    this.authorServiceObj.getAuthorData()
+    this.authorService.getAuthorData()
     .subscribe((authors)=>{
       this.adata = JSON.parse(JSON.stringify(authors));
     })
+  }
+  DeleteAuthor(id: String){
+    this.authorService.deleteAuthor(id).subscribe(res =>{
+      this.authorService.getAuthors().subscribe((data)=>{
+        this.adata=JSON.parse(JSON.stringify(data));
+      })
+    })
+  }
+
+  EditAuthor(author:any){
+    localStorage.setItem("editAuthorId", author._id.toString());
+    this.router.navigate(['editauthor']);
+  }
+
+  ReadAuthor(author:any){
+    localStorage.setItem("readAuthorId", author._id.toString());
+    this.router.navigate(['author']);
   }
 }

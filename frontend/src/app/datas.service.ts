@@ -22,12 +22,31 @@ export class DatasService {
     return this.http.post('http://localhost:1514/addbooks',{"book":item})
     .subscribe((data=>{
       console.log(data)}))
-      
   }
-
-getsBook(id:any){
-    return this.http.get('http://localhost:1514/book/${id}');
-
-}
+  getBook(id:any){
+    return this.http.get("http://localhost:1514/book/"+id);
+  }
+  editBook(book:any)
+  {
+    return this.http.put("http://localhost:1514/editbook",book)
+    .subscribe(data =>{console.log(data)})
+  }
+  deleteBook(id:any){
+    return this.http.delete("http://localhost:1514/deletebook/"+id);
+  }
+  getAuthor(id:any){
+    return this.http.get("http://localhost:1514/author/"+id);
+  }
+  getAuthors(){
+    return this.http.get("http://localhost:1514/authors");
+  }
+  editAuthor(author:any)
+  {
+    return this.http.put("http://localhost:1514/editauthor",author)
+    .subscribe(data =>{console.log(data)})
+  }
+  deleteAuthor(id:any){
+    return this.http.delete("http://localhost:1514/deleteauthor/"+id);
+  }
   // return this.http.get(`api/leagues/${id}`).map(res => res.json());
 }

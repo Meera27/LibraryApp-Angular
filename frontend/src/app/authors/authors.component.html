@@ -52,18 +52,15 @@
                 </div>
                 <div class="col-md-10 col-sm-9">
                   <h3>{{author.name}}</h3>
-                  <h5>{{author.title}}</h5>
+        
 
-                  <a routerLink="edit-authors" class="btn btn-primary pull-right btnNext">Edit<i
-                    class="glyphicon "></i></a><br><br>
-                <a routerLink="delete-authors" class="btn btn-primary pull-right btnNext">Delete<i
-                    class="glyphicon "></i></a>
-
+                    <button class="btn btn-primary" style="margin-left: 700px;" (click)="EditAuthor(author)">Edit</button>
+                    <button class="btn btn-danger" style="margin-left: 5px; margin-right: 5px;" >Delete</button>
 
                   <div class="row">
                     <div class="col-xs-9">
                       <h4><span class="label label-default">{{author.title}}</span></h4><h4>
-                      <small style="font-family:courier,'new courier';" class="text-muted">Last week • <a routerLink="author" class="text-muted">Read More</a></small>
+                      <small style="font-family:courier,'new courier';" class="text-muted">Last week • <a (click)="ReadAuthor(author)" class="text-muted">Read More</a></small>
                       </h4></div>
                     <div class="col-xs-3"></div>
                   </div>
@@ -74,7 +71,7 @@
               <!--/stories-->
               
               
-              <a routerLink="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
+              <a routerLink="/" class="btn btn-primary pull-right btnNext">More<i class="glyphicon glyphicon-chevron-right"></i></a>
             
               
             </div>
