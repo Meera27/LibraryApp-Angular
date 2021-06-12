@@ -9,7 +9,7 @@ import { DatasService } from '../datas.service';
   styleUrls: ['./addauthors.component.css']
 })
 export class AddauthorsComponent implements OnInit {
-title:String = "Add Authors";
+title:String = "Add Author";
   constructor(private authorService : DatasService,private router : Router) { }
   authordetails =  new AuthorModel('','','','');
 

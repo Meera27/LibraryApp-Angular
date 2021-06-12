@@ -10,7 +10,7 @@ import {AuthService} from '../auth.service';
   styleUrls: ['./addbooks.component.css']
 })
 export class AddbooksComponent implements OnInit {
-  title : String ="Add Books";
+  title : String ="Add Book";
 
 
   constructor(private dataService : DatasService,private router :Router, public _auth:AuthService) { }

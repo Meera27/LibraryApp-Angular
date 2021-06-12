@@ -128,7 +128,7 @@ app.get("/books",verifyToken,function(req, res) {
           });
     
 
-          app.put('/editbook',verifyToken,(req,res)=>{
+          app.put('/editbook',(req,res)=>{
             console.log(req.body)
             id=req.body._id,
             title = req.body.title,
