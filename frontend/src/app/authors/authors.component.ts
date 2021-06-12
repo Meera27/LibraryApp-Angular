@@ -24,8 +24,8 @@ export class AuthorsComponent implements OnInit {
       this.adata = JSON.parse(JSON.stringify(authors));
     })
   }
-  DeleteAuthor(id: String){
-    this.authorService.deleteAuthor(id).subscribe(res =>{
+  DeleteAuthor(author: any){
+    this.authorService.deleteAuthor(author._id.toString()).subscribe(res =>{
       this.authorService.getAuthors().subscribe((data)=>{
         this.adata=JSON.parse(JSON.stringify(data));
       })

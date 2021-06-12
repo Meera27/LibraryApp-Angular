@@ -24,8 +24,8 @@ export class BooksComponent implements OnInit {
       this.bdata = JSON.parse(JSON.stringify(book));
    })
   }
-  DeleteBook(id: String){
-    this.dataService.deleteBook(id).subscribe(res =>{
+  DeleteBook(book: any){
+    this.dataService.deleteBook(book._id.toString()).subscribe(res =>{
       this.dataService.getBookData().subscribe((data)=>{
         this.bdata=JSON.parse(JSON.stringify(data));
       })

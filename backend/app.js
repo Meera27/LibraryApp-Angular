@@ -55,7 +55,7 @@ app.post("/login",(req, res)=>{
 })
 
 
-app.get("/books",function (req, res) {
+app.get("/books",function(req, res) {
     // res.send("hi");
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
@@ -109,7 +109,7 @@ app.get("/books",function (req, res) {
           });
     
 
-          app.put('/editbook', (req,res)=>{
+          app.put('/editbook',(req,res)=>{
             console.log(req.body)
             id=req.body._id,
             title = req.body.title,
@@ -130,7 +130,7 @@ app.get("/books",function (req, res) {
            })
         });
 
-        app.delete('/deletebook/:id', function(req,res){
+        app.delete('/deletebook/:id',function(req,res){
           const id = req.params.id;
           BookData.remove({_id: id})
           .then(function(){
@@ -145,7 +145,7 @@ app.get("/books",function (req, res) {
             res.status(200).json({id});
         })
     });
-        app.put('/editauthor', (req,res)=>{
+        app.put('/editauthor',(req,res)=>{
           console.log(req.body)
           id=req.body._id,
           name = req.body.name,
@@ -170,7 +170,7 @@ app.get("/books",function (req, res) {
           });
       });
     
-    app.get('/author/:id', function(req, res){
+    app.get('/author/:id',function(req, res){
         const id = req.params.id;
         AuthorData.findOne({"_id":id})
         .then((author)=>{

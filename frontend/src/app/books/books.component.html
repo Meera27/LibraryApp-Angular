@@ -52,11 +52,11 @@
                   <!-- <h5>{{books.author}}</h5> -->
 
                   <button class="btn btn-primary" style="margin-left: 700px;" (click)="EditBook(books)">Edit</button>
-                  <button class="btn btn-danger" style="margin-left: 5px; margin-right: 5px;" >Delete</button>
+                  <button class="btn btn-danger" style="margin-left: 5px; margin-right: 5px;" (click)="DeleteBook(books)">Delete</button>
                   <div class="row">
                     <div class="col-xs-9">
                       <h4><span class="label label-default">{{books.genre}}</span></h4><h4>
-                      <small style="font-family:courier,'new courier';" class="text-muted">Last week • <a routerLink="book" class="text-muted">Read More</a></small>
+                      <small style="font-family:courier,'new courier';" class="text-muted">Last week • <a (click)="ReadBook(books)" class="text-muted">Read More</a></small>
                       </h4></div>
                     <div class="col-xs-3"></div>
                   </div>

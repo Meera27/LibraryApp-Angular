@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { EditBooksComponent } from './edit-books/edit-books.component';
+import { BookComponent } from './book/book.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ component:EditBooksComponent
   path:'books',
   canActivate : [AuthGuard],
   component:BooksComponent
+},
+{
+  path:'book',
+  component:BookComponent
 },
 
   {path:'addbooks',

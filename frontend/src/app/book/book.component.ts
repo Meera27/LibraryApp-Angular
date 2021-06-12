@@ -9,14 +9,17 @@ import {DatasService} from '../datas.service';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
-  title:String = "Book";
-
-  sbook:BookModel[]=[];
+  book = new BookModel('','','','','');
   
 
   constructor(private bookServiceObj : DatasService) { }
+  
 
   ngOnInit(): void {
+    let rbookId = localStorage.getItem('readBookId');
+    this.bookServiceObj.getBook(rbookId).subscribe((data)=>{
+      this.book = JSON.parse(JSON.stringify(data));
+    })
   
   }
 
