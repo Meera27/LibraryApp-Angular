@@ -30,6 +30,7 @@ const routes: Routes = [
 },
 {
   path:'editbook',
+  canActivate : [AuthGuard],
   component:EditBooksComponent
   },
   {path:'author',
@@ -37,6 +38,7 @@ const routes: Routes = [
   component:AuthorComponent
 },
   {path:'editauthor',
+  canActivate : [AuthGuard],
   component:EditAuthorsComponent
 },
 //   {path:'delete-authors',

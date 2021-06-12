@@ -9,8 +9,9 @@ import { DatasService } from '../datas.service';
   styleUrls: ['./edit-authors.component.css']
 })
 export class EditAuthorsComponent implements OnInit {
-
+  title:String = "Update Author"
   constructor(private authorService: DatasService, private router:Router) { }
+  
   authorItem = new AuthorModel('','','','');
 
   ngOnInit(): void {

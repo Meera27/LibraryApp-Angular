@@ -111,7 +111,7 @@ app.get("/books",verifyToken,function(req, res) {
                         res.send(authordata);
                    });
         });
-        app.post("/addauthor",function (req, res) {
+        app.post("/addauthor",verifyToken,function (req, res) {
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         console.log(req.body);

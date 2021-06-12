@@ -9,6 +9,7 @@ import { Router} from '@angular/router';
   styleUrls: ['./edit-books.component.css']
 })
 export class EditBooksComponent implements OnInit {
+  title:String = "Update Book"
 
   constructor(private bookServiceObj: DatasService, private _route:Router) { }
   bookItem = new BookModel('','','','','');
