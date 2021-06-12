@@ -24,7 +24,7 @@ function verifyToken(req,res,next){
   {
     return res.status(401).send('Unauthorized Request');
   }
-  let token = req.headers.authorization.split('')[1]
+  let token = req.headers.authorization.split(' ')[1]
   if(token=='null')
   {
     return res.status(401).send("Unauthorised Request")
@@ -111,7 +111,7 @@ app.get("/books",verifyToken,function(req, res) {
                         res.send(authordata);
                    });
         });
-        app.post("/addauthor",verifyToken,function (req, res) {
+        app.post("/addauthor",function (req, res) {
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         console.log(req.body);
@@ -128,7 +128,7 @@ app.get("/books",verifyToken,function(req, res) {
           });
     
 
-          app.put('/editbook',(req,res)=>{
+          app.put('/editbook',verifyToken,(req,res)=>{
             console.log(req.body)
             id=req.body._id,
             title = req.body.title,
