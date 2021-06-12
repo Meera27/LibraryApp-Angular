@@ -19,10 +19,12 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   loginUser(user:any){
+    localStorage.setItem("username", this.user.username);
     this._auth.loginUser(this.user)
     .subscribe(
       res=>{  
         localStorage.setItem('token',res.token);
+        sessionStorage.setItem("user", this.user.username);
         this._router.navigate(['/books']);
       })
   }

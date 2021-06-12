@@ -16,7 +16,7 @@ export class AuthorsComponent implements OnInit {
 
   adata : AuthorModel[] =[];
 
-  constructor(public authorService : DatasService,public router :Router,private _auth: AuthService) { }
+  constructor(public authorService : DatasService,public router :Router,public _auth: AuthService) { }
 
   ngOnInit(): void {
     this.authorService.getAuthorData()

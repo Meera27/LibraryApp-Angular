@@ -39,11 +39,11 @@
             <div class="row">
      
 
-              <form class="form col-lg-6" #userlogin="ngForm" (ngSubmit)="loginUser(user)"action="" method="POST" role="search"style="margin-left: 25%; margin-right: 25%;" >
+              <form class="form col-lg-6" #userlogin="ngForm" (ngSubmit)="loginUser(user)" role="search"style="margin-left: 25%; margin-right: 25%;" >
                 <div class="form-group">
                   <!-- <label for="exampleInputEmail1">Email address</label> -->
                   <!-- <input type="email" class="form-control" id="exampleInputEmail1" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="user.email" name="email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" placeholder="Enter email" required> -->
-                  <input type="text" class="form-control" [(ngModel)]="user.username" id="exampleInputEmail1" name="username" placeholder="Enter email" required>
+                  <input type="text" class="form-control" [(ngModel)]="user.username" id="exampleInputEmail1" name="username" placeholder="Enter Username" required>
                   <!-- <small class="text-danger" [class.d-none]="email.valid || email.touched">Enter Valid Email</small> -->
                 </div>
                 <div class="form-group">

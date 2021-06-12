@@ -16,7 +16,7 @@ export class BooksComponent implements OnInit {
 
   bdata : BookModel[] = [];
 
-  constructor(private dataService : DatasService,private router : Router) { }
+  constructor(private dataService : DatasService,private router : Router,public _auth:AuthService) { }
 
   ngOnInit(): void {
     this.dataService.getBookData()

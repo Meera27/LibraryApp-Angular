@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,13 +14,20 @@ export class AuthService {
   } 
 
   constructor(private http : HttpClient) { }
+  rolesVerify(){
+    let admin=sessionStorage.getItem('user');
+    if(admin==='admin'){
+      return true
+    }
+  }
+
   loggedIn()
   {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('token')
   }
   getToken()
   {
-   return localStorage.getItem('token');
+   return localStorage.getItem('token')
   }
   
 }

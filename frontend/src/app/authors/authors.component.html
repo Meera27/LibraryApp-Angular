@@ -54,8 +54,11 @@
                   <h3>{{author.name}}</h3>
         
 
-                    <button class="btn btn-primary"  (click)="EditAuthor(author)">Edit</button>
+                    <!-- <button class="btn btn-primary"  (click)="EditAuthor(author)">Edit</button>
                     <button class="btn btn-danger" (click)="DeleteAuthor(author)">Delete</button>
+                   -->
+                   <a (click)="EditAuthor(author)"  class="btn btn-primary pull-right btnNext">Edit<i class="glyphicon "></i></a><br><br>
+            <a (click)="DeleteAuthor(author)" class="btn btn-danger pull-right btnNext">Delete<i class="glyphicon "></i></a>
 
                   <div class="row">
                     <div class="col-xs-9">

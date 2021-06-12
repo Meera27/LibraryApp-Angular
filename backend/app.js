@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+var bodyparser = require('body-parser');
 const InitiateMongoServer = require("./db");
 InitiateMongoServer();
 
@@ -15,26 +16,27 @@ app.use(express.json());
 
 username="admin"
 password="1234";
-// var bodyparser = require('body-parser');
+ 
+
 function verifyToken(req,res,next){
 
   if(!req.headers.authorization)
   {
     return res.status(401).send('Unauthorized Request');
   }
-  let token = req.headers.authorization.split('')[1];
+  let token = req.headers.authorization.split('')[1]
   if(token=='null')
   {
-    return res.status(401).send("Unauthorised Request");
+    return res.status(401).send("Unauthorised Request")
   }
-  let payload = jwt.verify(token,'secretKey');
-  console.log(payload);
+  let payload = jwt.verify(token,'secretKey')
+  // console.log(payload)
   if(!payload)
   {
-    return res.status(401).send("Unauthorized Request");
+    return res.status(401).send("Unauthorized Request")
   }
   req.userId= payload.subject;
-  next()
+  next();
 }
 
 
@@ -42,20 +44,37 @@ app.post("/login",(req, res)=>{
     let userData = req.body;
     if(!username){
       res.status(401).send("Invalid Username")
+  
     }else 
     if(password !== userData.password){
+
       res.status(401).send("Invalid Password")
     }
     else{
-      let payload = {subject:username+password}
-      let token = jwt.sign(payload,'secretKey')
-      res.status(200).send({token});
-      // console.log("Success");
+            let payload = {subject:username+password};
+            let token = jwt.sign(payload,'secretKey');
+            res.status(200).send({token});
+     
     }
 })
 
+app.post('/newuser',function(req,res){
+  res.header("Access-Control-Allow-Origin","*");
+  res.header("Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS");
+  console.log(req.body);
+  var user = {
+      fname : req.body.user.fname,
+      lname : req.body.user.lname,
+      number : req.body.user.number,
+      email : req.body.user.email,
+      password : req.body.user.password
+  }
+  var user = new UserData(user);
+  user.save();
+});
 
-app.get("/books",function(req, res) {
+
+app.get("/books",verifyToken,function(req, res) {
     // res.send("hi");
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
@@ -66,7 +85,7 @@ app.get("/books",function(req, res) {
     });
 
 
-    app.post("/addbooks",function (req, res) {
+    app.post("/addbooks",verifyToken,function (req, res) {
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         console.log(req.body);
@@ -83,7 +102,7 @@ app.get("/books",function(req, res) {
             console.log(book);
           });
 
-    app.get("/authors",function (req, res) {
+    app.get("/authors",verifyToken,function (req, res) {
         // res.send("hi");
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
@@ -92,7 +111,7 @@ app.get("/books",function(req, res) {
                         res.send(authordata);
                    });
         });
-        app.post("/addauthor",function (req, res) {
+        app.post("/addauthor",verifyToken,function (req, res) {
         res.header("Access-Control-Allow-Origin","*");
         res.header("Access-Control-Allow-Methods : GET,POST,PATCH,PUT,DELETE,OPTIONS");
         console.log(req.body);

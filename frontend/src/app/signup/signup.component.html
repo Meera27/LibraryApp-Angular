@@ -39,24 +39,27 @@
           <div class="row">
    
 
-            <form class="form form-group col-lg-6" [formGroup]="registerForm" action="" method="" role="search"style="margin-left: 25%; margin-right: 25%;" >
-              
+            <!-- <form class="form form-group col-lg-6" [formGroup]="registerForm" (ngSubmit)="userVerify()" role="search"style="margin-left: 25%; margin-right: 25%;" > -->
+              <form class="form form-group col-lg-6" #userlogin="ngForm" (ngSubmit)="userVerify()" role="search"style="margin-left: 25%; margin-right: 25%;" >
+
               <div class="form-group">
-                <input type="text" class="form-control"   placeholder="Firstname">
+                <input type="text" class="form-control" name="fname" [(ngModel)]="user.fname" placeholder="Firstname">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control"  placeholder="Lastname">
+                <input type="text" class="form-control" name="lname" [(ngModel)]="user.lname" placeholder="Lastname">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control"  placeholder="Phone Number">
+                <input type="text" class="form-control" name="number" [(ngModel)]="user.number" placeholder="Phone Number">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" FormControlName="email" id="exampleInputEmail1" placeholder="Enter email">
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" [(ngModel)]="user.email" placeholder="Enter email">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" FormControlName="password" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1" [(ngModel)]="user.password" placeholder="Password">
               </div>
-            <button type="submit"[disabled]="!registerForm.invalid" class="btn btn-default">Submit</button>
+            <!-- <button type="submit"[disabled]="!registerForm.invalid" class="btn btn-default">Submit</button> -->
+            <button type="submit"class="btn btn-default">Submit</button>
+
             </form>
 
           </div>
