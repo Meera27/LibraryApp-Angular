@@ -19,6 +19,9 @@ export class AuthService {
     if(admin==='admin'){
       return true
     }
+    else{
+      true
+    }
   }
 
   loggedIn()
